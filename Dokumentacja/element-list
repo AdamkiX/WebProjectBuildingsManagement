@@ -1,0 +1,7 @@
+com.tab.buildings
+com.tab.buildings.controller
+com.tab.buildings.entity
+com.tab.buildings.rep
+com.tab.buildings.security
+com.tab.buildings.service
+com.tab.buildings.wrapper

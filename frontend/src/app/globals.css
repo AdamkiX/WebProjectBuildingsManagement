@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+
+@layer components {
+	.loginBG {
+		background: radial-gradient(
+			circle at bottom left,
+			#f6f7ff,
+			#4b5563 50%,
+			#f6f7ff 70%,
+			#4b5563 76%
+		);
+		@apply text-black;
+	}
+
+	.modal::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	.modal::-webkit-scrollbar-thumb {
+		/* border-radius: 0 0.75rem 0.75rem 0; */
+		background: #2a9d8f;
+		width: 10px;
+		background-clip: content-box;
+		border-top: 12px solid transparent;
+		border-bottom: 12px solid transparent;
+	}
+}
+
+@tailwind utilities;

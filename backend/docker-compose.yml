@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: buildingsDB
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: DOCKERDB
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./db/mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  spring-boot-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-boot-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      # Dane do połączenia z MySQL w sieci Docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/DOCKERDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      # Hibernate i JPA
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect
+      # Opcjonalnie: Hikari czeka na DB 60 sekund
+      SPRING_DATASOURCE_HIKARI_INITIALIZATION_FAIL_TIMEOUT: 60000
