@@ -1,6 +1,7 @@
 **System zarządzania budynkami - projekt webowy**
 
 W celu postawienia projektu należy w peirwszej kolejności mieć zainstalowane programy:
+
 Docker Desktop: https://docs.docker.com/desktop/
 InteliJ IDEA: https://www.jetbrains.com/idea/
 
